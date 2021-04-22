@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MyAccountFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvMyAccountTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Account"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="32dp"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfilePicture"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@color/black"
+                android:layout_below="@id/tvMyAccountTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Name is Jeff"
+                android:textSize="30dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/ivProfilePicture"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:id="@+id/tvProfileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="thisismyemail@gmail.com"
+                android:textSize="16dp"
+                android:layout_below="@id/tvProfileName"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:id="@+id/tvProfileDescription"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis. This is user bio."
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_below="@id/tvProfileEmail"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:textColor="#FFF"
+                android:background="@drawable/button_shape_style_logout"
+                android:layout_below="@id/tvProfileDescription"
+                android:layout_alignEnd="@id/tvProfileDescription"
+                android:layout_marginTop="60dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_help"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"/>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</FrameLayout>
