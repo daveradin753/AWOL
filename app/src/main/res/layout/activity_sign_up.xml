@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_signup_background"
+    tools:context=".login_signup.SignUpActivity">
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/etFirstNameSignUp"
+            android:layout_width="217dp"
+            android:layout_height="38dp"
+            android:background="@drawable/signin_signout_edittext_style"
+            android:hint="First Name"
+            android:paddingLeft="7dp" />
+
+        <EditText
+            android:id="@+id/etLastNameSignUp"
+            android:layout_width="217dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/signin_signout_edittext_style"
+            android:hint="Last Name"
+            android:paddingLeft="7dp" />
+
+        <EditText
+            android:id="@+id/etUsernameSignUp"
+            android:layout_width="217dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/signin_signout_edittext_style"
+            android:hint="Username"
+            android:paddingLeft="7dp" />
+
+        <EditText
+            android:id="@+id/etPasswordSignUp"
+            android:layout_width="217dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/signin_signout_edittext_style"
+            android:drawableRight="@drawable/eye"
+            android:hint="Password"
+            android:paddingLeft="8dp"
+            android:paddingRight="5dp" />
+
+        <EditText
+            android:id="@+id/etConfirmPassword"
+            android:layout_width="217dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/signin_signout_edittext_style"
+            android:hint="Confirm Password"
+            android:paddingLeft="8dp"
+            android:paddingRight="5dp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="217dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/signin_signout_edittext_style"
+            android:hint="Email"
+            android:paddingLeft="8dp"
+            android:paddingRight="5dp" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignUp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/signin_signout_button_style"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
