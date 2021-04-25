@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557664333416",
+    "project_id": "awol-223ad",
+    "storage_bucket": "awol-223ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557664333416:android:5e2f5533c41125726ad5dd",
+        "android_client_info": {
+          "package_name": "com.example.awol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557664333416-r5vi5bqkcidqu8e7ngef6oq90j717190.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU88f0ECvTKxVZzsrpyZVCgPwsGKqb1MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557664333416-r5vi5bqkcidqu8e7ngef6oq90j717190.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
