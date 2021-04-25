@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AWOL">
-        <activity android:name=".forgot_password.VerificationActivity"></activity>
+        <activity android:name=".forgot_password.ResetYourPasswordActivity"></activity>
+        <activity android:name=".forgot_password.VerificationActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".forgot_password.ForgotYourPasswordActivity" />
         <activity android:name=".login_signup.SignUpActivity" />
