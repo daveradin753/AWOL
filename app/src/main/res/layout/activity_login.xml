@@ -20,13 +20,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etUsernameLogin"
+        android:id="@+id/etEmailLogin"
         android:layout_width="217dp"
         android:layout_height="38dp"
         android:background="@drawable/signin_signout_edittext_style"
         android:drawableLeft="@drawable/username"
         android:drawablePadding="10dp"
-        android:hint="Username"
+        android:hint="Email"
         android:paddingLeft="7dp"
         app:layout_constraintBottom_toTopOf="@+id/etPasswordLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,11 +47,12 @@
         android:layout_marginTop="10dp"
         android:paddingRight="5dp"
         android:paddingLeft="8dp"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsernameLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
@@ -99,4 +100,5 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvDontHave" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

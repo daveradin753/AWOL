@@ -7,4 +7,35 @@
     android:background="@drawable/welcome_page"
     tools:context=".WelcomeActivity">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnToLoginActivity"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/signin_signout_button_style"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnToSignupActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnToSignupActivity"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/signup_button_style2"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="#01507E"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

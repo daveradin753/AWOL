@@ -19,7 +19,9 @@
         </activity>
         <activity android:name=".forgot_password.ForgotYourPasswordActivity" />
         <activity android:name=".login_signup.SignUpActivity" />
-        <activity android:name=".login_signup.LoginActivity" />
+        <activity android:name=".login_signup.LoginActivity">
+
+        </activity>
         <activity android:name=".MainActivity"></activity>
     </application>
 
