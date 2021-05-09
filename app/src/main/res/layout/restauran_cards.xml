@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/restaurantCard">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRestaurnt"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_restaurant_menu_24"
+            android:background="@android:color/holo_blue_dark"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/cvRestaurnt"
+        android:layout_marginTop="8dp"
+        android:text="Restaurant Name"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvRestaurantAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Address"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/cvRestaurnt"
+        android:layout_below="@id/tvRestaurantName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvRestaurantDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 km away"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#AEAEAE"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"/>
+
+
+</RelativeLayout>
