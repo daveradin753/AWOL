@@ -46,7 +46,7 @@ class RestaurantListFragment : Fragment() {
 
     private fun getDataRestaurant() {
         database = FirebaseDatabase.getInstance()
-        databaseReference = database.getReference("restaurant")
+        databaseReference = database.getReference("restaurants")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {

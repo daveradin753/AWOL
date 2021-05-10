@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         val etPasswordLogin = findViewById<EditText>(R.id.etPasswordLogin)
 
         auth = FirebaseAuth.getInstance()
-        findViewById<TextView>(R.id.tvSignUp).setOnClickListener {
+        findViewById<TextView>(R.id.tvGoToSignUp).setOnClickListener {
             intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
