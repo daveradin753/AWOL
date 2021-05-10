@@ -53,6 +53,7 @@ class RestaurantListCustomAdapter(
                 intent.putExtra("restoName" ,data[adapterPosition].name)
                 intent.putExtra("restoAddress", data[adapterPosition].alamat)
                 intent.putExtra("restoWorkingHour", data[adapterPosition].workingHour)
+                intent.putExtra("restoImage", data[adapterPosition].images)
                 itemView.context.startActivity(intent)
             }
         }
