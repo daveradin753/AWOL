@@ -46,15 +46,6 @@
             android:paddingLeft="7dp" />
 
         <EditText
-            android:id="@+id/etUsernameSignUp"
-            android:layout_width="217dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/signin_signout_edittext_style"
-            android:hint="Username"
-            android:paddingLeft="7dp" />
-
-        <EditText
             android:id="@+id/etPasswordSignUp"
             android:layout_width="217dp"
             android:layout_height="38dp"
