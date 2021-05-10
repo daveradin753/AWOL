@@ -20,11 +20,18 @@ class RestaurantDetail : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
 
-
         val tvRestaurantDetailName = findViewById<TextView>(R.id.tvRestaurantDetailName)
         val tvRestaurantDetailAddress = findViewById<TextView>(R.id.tvRestaurantDetailAddress)
         val tvRestaurantDetailWorkingHour = findViewById<TextView>(R.id.tvRestaurantDetailWorkingHour)
         val ivRestaurantDetailBack = findViewById<ImageView>(R.id.ivRestaurantDetailBack)
+
+        val name = intent.getStringExtra("restoName").toString()
+        val address = intent.getStringExtra("restoAddress").toString()
+        val workingHour = intent.getStringExtra("restoWorkingHour")
+
+        tvRestaurantDetailName.text = name
+        tvRestaurantDetailAddress.text = address
+        tvRestaurantDetailWorkingHour.text = workingHour
 
     }
 

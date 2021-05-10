@@ -33,5 +33,19 @@ class WelcomeActivity : AppCompatActivity(){
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            reload()
+        }
+
+    }
+
+    private fun reload () {
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
 
 }
