@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -25,7 +26,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var etPasswordSignUp : EditText
     private lateinit var etConfirmPasswordSignUp : EditText
     private lateinit var etEmail : EditText
-//    private lateinit var btnSignUp: Button
+    private lateinit var btnSignUp: Button
     private lateinit var databaseRefrence : DatabaseReference
     private lateinit var database: FirebaseDatabase
     private lateinit var auth : FirebaseAuth
@@ -42,10 +43,37 @@ class SignUpActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
 
         auth = FirebaseAuth.getInstance()
-        val currentUserID = auth.uid
+        val currentUserID : String = auth.uid.toString()
 
-        findViewById<Button>(R.id.btnSignUp).setOnClickListener {
+        btnSignUp = findViewById(R.id.btnSignUp)
+        btnSignUp.setOnClickListener{
+            val email : String = etEmail.text.toString()
+            val password : String = etPasswordSignUp.text.toString()
+            val confirmpassword : String = etConfirmPasswordSignUp.text.toString()
+            val name : String = etFirstNameSignUp.text.toString() + etLastNameSignUp.text.toString()
 
+            if (TextUtils.isEmpty(etFirstNameSignUp.text.toString()) && TextUtils.isEmpty(etLastNameSignUp.text.toString())){
+                etFirstNameSignUp.error = "First Name is required!"
+                etLastNameSignUp.error = "Last Name is required!"
+                return@setOnClickListener
+            }
+            if (TextUtils.isEmpty(password)) {
+                etPasswordSignUp.error = "Password is required!"
+                return@setOnClickListener
+            }
+            if (password.length < 8) {
+                etPasswordSignUp.error = "Password must be more than 8 characters!"
+                return@setOnClickListener
+            }
+            if (password != confirmpassword) {
+                etConfirmPasswordSignUp.error = "Values do not match with the first one!"
+                return@setOnClickListener
+            }
+            if (TextUtils.isEmpty(email)) {
+                etEmail.error = "Email is required!"
+                return@setOnClickListener
+            }
+            createNewUser(currentUserID, name, email, password)
         }
     }
     fun writeNewUser(userId: String, name: String, email: String) {
