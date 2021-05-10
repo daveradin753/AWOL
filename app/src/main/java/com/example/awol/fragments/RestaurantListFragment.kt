@@ -1,6 +1,7 @@
 package com.example.awol.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +20,6 @@ class RestaurantListFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private val dataObjectRestaurant: MutableList<DataObjectRestaurant> = ArrayList()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +31,7 @@ class RestaurantListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
-
+        getDataRestaurant()
 
         val layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
         val adapter = RestaurantListCustomAdapter(dataObjectRestaurant)
@@ -45,16 +45,18 @@ class RestaurantListFragment : Fragment() {
     private fun getDataRestaurant() {
         database = FirebaseDatabase.getInstance()
         databaseReference = database.getReference("restaurant")
-
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    dataObjectRestaurant.clear()
                     for (data in snapshot.children) {
-                        val name = snapshot.child("name").value.toString()
-                        val alamat = snapshot.child("alamat").value.toString()
-                        val koordinat = snapshot.child("koordinat").value.toString()
-                        val workingHour = snapshot.child("working hour").value.toString()
+                        val name = data.child("name").value.toString()
+                        val alamat = data.child("alamat").value.toString()
+                        val koordinat = data.child("koordinat").value.toString()
+                        val workingHour = data.child("working hour").value.toString()
                         dataObjectRestaurant.add(DataObjectRestaurant(name, alamat, koordinat, workingHour))
+//                        Log.e("Database", "Read Success $name")
+
                     }
                 }
             }

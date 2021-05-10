@@ -1,5 +1,6 @@
 package com.example.awol.fragments
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.awol.DataObjectRestaurant
 import com.example.awol.R
+import com.example.awol.RestaurantDetail
+import com.example.awol.login_signup.LoginActivity
 import org.w3c.dom.Text
 
 class RestaurantListCustomAdapter(
@@ -36,8 +39,18 @@ class RestaurantListCustomAdapter(
     }
 
     inner class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
-        val tvRestaurantName: TextView = itemView.findViewById(R.id.tvRestaurantName)
-        val tvRestaurantAddress: TextView = itemView.findViewById(R.id.tvRestaurantAddress)
-        val restaurantCard: RelativeLayout =itemView.findViewById(R.id.restaurantCard)
+        val tvRestaurantName: TextView
+        val tvRestaurantAddress: TextView
+        val restaurantCard: RelativeLayout
+
+        init {
+            tvRestaurantName = itemView.findViewById(R.id.tvRestaurantName)
+            tvRestaurantAddress = itemView.findViewById(R.id.tvRestaurantAddress)
+            restaurantCard = itemView.findViewById(R.id.restaurantCard)
+
+            itemView.setOnClickListener {
+                itemView.context.startActivity(Intent(itemView.context, RestaurantDetail::class.java))
+            }
+        }
     }
 }

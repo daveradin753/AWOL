@@ -9,20 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AWOL">
-        <activity android:name=".forgot_password.ResetYourPasswordActivity"/>
+        <activity android:name=".RestaurantDetail"></activity>
+        <activity android:name=".forgot_password.ResetYourPasswordActivity" />
         <activity android:name=".forgot_password.VerificationActivity" />
-        <activity android:name=".WelcomeActivity">
-
-        </activity>
+        <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".forgot_password.ForgotYourPasswordActivity" />
         <activity android:name=".login_signup.SignUpActivity" />
         <activity android:name=".login_signup.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
