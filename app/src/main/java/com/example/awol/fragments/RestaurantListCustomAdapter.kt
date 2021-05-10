@@ -49,7 +49,11 @@ class RestaurantListCustomAdapter(
             restaurantCard = itemView.findViewById(R.id.restaurantCard)
 
             itemView.setOnClickListener {
-                itemView.context.startActivity(Intent(itemView.context, RestaurantDetail::class.java))
+                val intent = Intent(itemView.context, RestaurantDetail::class.java)
+                intent.putExtra("restoName" ,data[adapterPosition].name)
+                intent.putExtra("restoAddress", data[adapterPosition].alamat)
+                intent.putExtra("restoWorkingHour", data[adapterPosition].workingHour)
+                itemView.context.startActivity(intent)
             }
         }
     }
