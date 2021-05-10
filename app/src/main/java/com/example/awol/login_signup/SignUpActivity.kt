@@ -47,12 +47,6 @@ class SignUpActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnSignUp).setOnClickListener {
 
         }
-
-
-
-//        createNewUser(currentUserID, )
-
-
     }
     fun writeNewUser(userId: String, name: String, email: String) {
         val user = DataObjectUsers(name, email)
