@@ -40,8 +40,8 @@
 
         <ImageView
             android:id="@+id/ivRestaurantDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="220dp"
             android:src="@drawable/restaurant_detail_image_test" />
 
         <TextView

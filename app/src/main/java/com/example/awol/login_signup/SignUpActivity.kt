@@ -3,7 +3,9 @@ package com.example.awol.login_signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -15,17 +17,19 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
-private lateinit var tvSignUp : TextView
-private lateinit var etFirstNameSignUp : EditText
-private lateinit var etLastNameSignUp : EditText
-private lateinit var etPasswordSignUp : EditText
-private lateinit var etConfirmPasswordSignUp : EditText
-private lateinit var etEmail : EditText
-private lateinit var databaseRefrence : DatabaseReference
-private lateinit var database: FirebaseDatabase
-private lateinit var auth : FirebaseAuth
-
 class SignUpActivity : AppCompatActivity() {
+
+    private lateinit var tvSignUp : TextView
+    private lateinit var etFirstNameSignUp : EditText
+    private lateinit var etLastNameSignUp : EditText
+    private lateinit var etPasswordSignUp : EditText
+    private lateinit var etConfirmPasswordSignUp : EditText
+    private lateinit var etEmail : EditText
+//    private lateinit var btnSignUp: Button
+    private lateinit var databaseRefrence : DatabaseReference
+    private lateinit var database: FirebaseDatabase
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -38,7 +42,15 @@ class SignUpActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
 
         auth = FirebaseAuth.getInstance()
+        val currentUserID = auth.uid
 
+        findViewById<Button>(R.id.btnSignUp).setOnClickListener {
+
+        }
+
+
+
+//        createNewUser(currentUserID, )
 
 
     }
@@ -56,17 +68,18 @@ class SignUpActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("user", "createUserWithEmail:success")
-                    val user = auth.currentUser
+                    writeNewUser(userId, name, email)
+                    Log.d(SIGN_UP, "createUserWithEmail:success")
                     intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w("user", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Log.w(SIGN_UP, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
+    final val SIGN_UP = "SIGN UP"
 
 }
