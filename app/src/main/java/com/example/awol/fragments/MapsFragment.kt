@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.awol.DataObjectRestaurant
 import com.example.awol.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -14,10 +15,40 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.database.*
 
 class MapsFragment : Fragment() {
 
+    private val data: List<DataObjectRestaurant> = ArrayList()
+    private lateinit var database: FirebaseDatabase
+    private lateinit var databaseReference: DatabaseReference
+
     private val callback = OnMapReadyCallback { googleMap ->
+
+        var d1: Double
+        var d2: Double
+        database = FirebaseDatabase.getInstance()
+        databaseReference = database.getReference("restaurants")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (data in snapshot.children) {
+                        val temp1: String = data.child("koordinat").child("d1").value.toString()
+                        val temp2: String = data.child("koordinat").child("d2").value.toString()
+                        d1 = temp1.toDouble()
+                        d2 = temp2.toDouble()
+                        val place = LatLng(d1, d2)
+                        googleMap.addMarker(MarkerOptions().position(place).title("Marker on"))
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
         /**
          * Manipulates the map once available.
          * This callback is triggered when the map is ready to be used.
@@ -42,5 +73,9 @@ class MapsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+
+    private fun getKoordinat() {
+
     }
 }

@@ -55,10 +55,9 @@ class RestaurantListFragment : Fragment() {
                     for (data in snapshot.children) {
                         val name = data.child("name").value.toString()
                         val alamat = data.child("alamat").value.toString()
-                        val koordinat = data.child("koordinat").value.toString()
                         val workingHour = data.child("working hour").value.toString()
                         val images = data.child("image").child("restaurant image").value.toString()
-                        dataObjectRestaurant.add(DataObjectRestaurant(name, alamat, koordinat, workingHour, images))
+                        dataObjectRestaurant.add(DataObjectRestaurant(name, alamat, workingHour, images))
 //                        Log.e("Database", "Read Success $name")
 
                     }

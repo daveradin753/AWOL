@@ -38,19 +38,19 @@ class MyAccountFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                val post = dataSnapshot.getValue<Post>()
-                // ...
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w(ACCOUNT, "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        postReference.addValueEventListener(postListener)
+//        val postListener = object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                // Get Post object and use the values to update the UI
+//                val post = dataSnapshot.getValue<Post>()
+//                // ...
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Getting Post failed, log a message
+//                Log.w(ACCOUNT, "loadPost:onCancelled", databaseError.toException())
+//            }
+//        }
+//        postReference.addValueEventListener(postListener)
 
         super.onViewCreated(view, savedInstanceState)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
