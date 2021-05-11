@@ -1,5 +1,6 @@
 package com.example.awol.fragments
 
+import android.location.Location
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -8,7 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.awol.DataObjectRestaurant
 import com.example.awol.R
-
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,6 +24,7 @@ class MapsFragment : Fragment() {
     private val data: List<DataObjectRestaurant> = ArrayList()
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private val callback = OnMapReadyCallback { googleMap ->
 
@@ -35,10 +38,11 @@ class MapsFragment : Fragment() {
                     for (data in snapshot.children) {
                         val temp1: String = data.child("koordinat").child("d1").value.toString()
                         val temp2: String = data.child("koordinat").child("d2").value.toString()
+                        val name: String = data.child("name").value.toString()
                         d1 = temp1.toDouble()
                         d2 = temp2.toDouble()
                         val place = LatLng(d1, d2)
-                        googleMap.addMarker(MarkerOptions().position(place).title("Marker on"))
+                        googleMap.addMarker(MarkerOptions().position(place).title("Marker on $name"))
                     }
                 }
             }
@@ -58,9 +62,13 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val sydney = LatLng(-34.0, 151.0)
+        val sydney = LatLng(-7.9375522807982515, 112.5865300054941)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.context)
+        fusedLocationClient.lastLocation
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLng(sydney))
+        googleMap.setMinZoomPreference(15F)
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -75,7 +83,4 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
-    private fun getKoordinat() {
-
-    }
 }

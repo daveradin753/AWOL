@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val navigationFragment = MapsFragment()
         val restaurantListFragment = RestaurantListFragment()
 
-        makeCurrentFragment(restaurantListFragment)
+        makeCurrentFragment(navigationFragment)
 
         navMainMenu.setOnNavigationItemSelectedListener {
             when (it.itemId) {
