@@ -21,6 +21,9 @@ import com.google.firebase.ktx.Firebase
 class MyAccountFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private lateinit var databaseReference: DatabaseReference
+
     private lateinit var ivProfilePicture : ImageView
     private lateinit var tvProfileName : TextView
     private lateinit var tvProfileEmail : TextView
@@ -38,23 +41,35 @@ class MyAccountFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val postListener = object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                // Get Post object and use the values to update the UI
-//                val post = dataSnapshot.getValue<Post>()
-//                // ...
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Getting Post failed, log a message
-//                Log.w(ACCOUNT, "loadPost:onCancelled", databaseError.toException())
-//            }
-//        }
-//        postReference.addValueEventListener(postListener)
+
+        tvProfileName = view.findViewById(R.id.tvProfileName)
+        tvProfileEmail = view.findViewById(R.id.tvProfileEmail)
+
+        auth = FirebaseAuth.getInstance()
+        val currentUID = auth.uid.toString()
+
+        database = FirebaseDatabase.getInstance()
+        databaseReference = database.getReference("users").child(currentUID)
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val name = snapshot.child("name").value.toString()
+                    val email = snapshot.child("email").value.toString()
+
+                    tvProfileName.setText(name)
+                    tvProfileEmail.setText(email)
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
 
         super.onViewCreated(view, savedInstanceState)
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
-        auth = FirebaseAuth.getInstance()
 
         btnLogout.setOnClickListener {
             val intent = Intent(activity, LoginActivity::class.java)

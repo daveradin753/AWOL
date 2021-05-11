@@ -50,7 +50,7 @@ class SignUpActivity : AppCompatActivity() {
             val email : String = etEmail.text.toString()
             val password : String = etPasswordSignUp.text.toString()
             val confirmpassword : String = etConfirmPasswordSignUp.text.toString()
-            val name : String = etFirstNameSignUp.text.toString() + etLastNameSignUp.text.toString()
+            val name : String = etFirstNameSignUp.text.toString() +" "+ etLastNameSignUp.text.toString()
 
             if (TextUtils.isEmpty(etFirstNameSignUp.text.toString()) && TextUtils.isEmpty(etLastNameSignUp.text.toString())){
                 etFirstNameSignUp.error = "First Name is required!"

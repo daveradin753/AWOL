@@ -57,17 +57,6 @@
                 android:textAlignment="center"
                 android:layout_marginBottom="30dp"/>
 
-            <TextView
-                android:id="@+id/tvProfileDescription"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla quam eu faci lisis mollis. This is user bio."
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:layout_below="@id/tvProfileEmail"
-                android:layout_centerHorizontal="true"
-                android:textAlignment="center"/>
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
@@ -77,9 +66,10 @@
                 android:textSize="18dp"
                 android:textColor="#FFF"
                 android:background="@drawable/button_shape_style_logout"
-                android:layout_below="@id/tvProfileDescription"
-                android:layout_alignEnd="@id/tvProfileDescription"
-                android:layout_marginTop="60dp"/>
+                android:layout_below="@id/tvProfileEmail"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="140dp"
+                android:layout_marginEnd="16dp"/>
 
             <ImageView
                 android:id="@+id/ivFaq"
