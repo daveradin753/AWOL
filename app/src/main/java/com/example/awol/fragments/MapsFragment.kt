@@ -64,7 +64,9 @@ class MapsFragment : Fragment() {
          */
         val sydney = LatLng(-7.9375522807982515, 112.5865300054941)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.context)
-        fusedLocationClient.lastLocation
+        fusedLocationClient.lastLocation.addOnCompleteListener {
+
+        }
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(sydney))
