@@ -82,6 +82,7 @@
                 android:layout_marginTop="60dp"/>
 
             <ImageView
+                android:id="@+id/ivFaq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_help"
