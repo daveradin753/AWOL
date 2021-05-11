@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.awol.fragments.MapsFragment
 import com.example.awol.fragments.MyAccountFragment
-import com.example.awol.fragments.NavigationFragment
 import com.example.awol.fragments.RestaurantListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         val myAccountFragment = MyAccountFragment()
-        val navigationFragment = NavigationFragment()
+        val navigationFragment = MapsFragment()
         val restaurantListFragment = RestaurantListFragment()
 
         makeCurrentFragment(restaurantListFragment)
@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun makeCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flMainMenu, fragment)
+            addToBackStack(null)
             commit()
         }
     }
