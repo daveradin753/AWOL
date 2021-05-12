@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/etEmailLogin"
-        android:layout_width="217dp"
+        android:layout_width="300dp"
         android:layout_height="38dp"
         android:background="@drawable/signin_signout_edittext_style"
         android:drawableLeft="@drawable/username"
@@ -37,7 +37,7 @@
 
     <EditText
         android:id="@+id/etPasswordLogin"
-        android:layout_width="217dp"
+        android:layout_width="300dp"
         android:layout_height="38dp"
         android:background="@drawable/signin_signout_edittext_style"
         android:drawableStart="@drawable/password"

@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.awol.MainActivity
 import com.example.awol.R
+import com.example.awol.forgot_password.ForgotYourPasswordActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -46,6 +47,10 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             signIn(email, password)
+        }
+        findViewById<TextView>(R.id.tvForgotLogin).setOnClickListener {
+            intent = Intent(this, ForgotYourPasswordActivity::class.java)
+            startActivity(intent)
         }
     }
 

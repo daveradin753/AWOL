@@ -42,7 +42,8 @@ class RestaurantDetail : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
 
-        gsReference = FirebaseStorage.getInstance().getReferenceFromUrl(images)
+//        gsReference = FirebaseStorage.getInstance().getReferenceFromUrl(images)
+        gsReference = FirebaseStorage.getInstance().getReference("restaurants/$name/$name image.jpg")
         val localFile = File.createTempFile(name, "jpg")
         gsReference.getFile(localFile)
                 .addOnSuccessListener {

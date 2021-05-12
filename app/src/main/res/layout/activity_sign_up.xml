@@ -30,7 +30,7 @@
 
         <EditText
             android:id="@+id/etFirstNameSignUp"
-            android:layout_width="217dp"
+            android:layout_width="300dp"
             android:layout_height="38dp"
             android:background="@drawable/signin_signout_edittext_style"
             android:hint="First Name"
@@ -38,7 +38,7 @@
 
         <EditText
             android:id="@+id/etLastNameSignUp"
-            android:layout_width="217dp"
+            android:layout_width="300dp"
             android:layout_height="38dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/signin_signout_edittext_style"
@@ -47,28 +47,30 @@
 
         <EditText
             android:id="@+id/etPasswordSignUp"
-            android:layout_width="217dp"
+            android:layout_width="300dp"
             android:layout_height="38dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/signin_signout_edittext_style"
             android:drawableRight="@drawable/eye"
             android:hint="Password"
+            android:inputType="textPassword"
             android:paddingLeft="8dp"
             android:paddingRight="5dp" />
 
         <EditText
             android:id="@+id/etConfirmPasswordSignUp"
-            android:layout_width="217dp"
+            android:layout_width="300dp"
             android:layout_height="38dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/signin_signout_edittext_style"
             android:hint="Confirm Password"
+            android:inputType="textPassword"
             android:paddingLeft="8dp"
             android:paddingRight="5dp" />
 
         <EditText
             android:id="@+id/etEmail"
-            android:layout_width="217dp"
+            android:layout_width="300dp"
             android:layout_height="38dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/signin_signout_edittext_style"
