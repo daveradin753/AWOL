@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -36,8 +37,6 @@
 <!--            android:value="AIzaSyBpJ9NX_KHvwFKspOVt-uTorD7KWdxTQts" />-->
 
         <activity android:name=".RestaurantDetail" />
-        <activity android:name=".forgot_password.ResetYourPasswordActivity" />
-        <activity android:name=".forgot_password.VerificationActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

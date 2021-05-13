@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantDetail">
 
-    <ImageView
-        android:id="@+id/ivRestaurantDetailBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icons8_back_to_100px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="12dp"/>
-
     <TextView
         android:id="@+id/tvRestaurantDetailName"
         android:layout_width="wrap_content"
@@ -75,14 +65,6 @@
             android:text="10.00 AM-10.00 PM"
             android:textColor="@color/black"
             android:textSize="18dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Recomended Menu"
-            android:textColor="@color/black"
-            android:textSize="21dp" />
 
     </LinearLayout>
 
