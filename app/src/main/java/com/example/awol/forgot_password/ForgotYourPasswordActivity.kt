@@ -1,11 +1,14 @@
 package com.example.awol.forgot_password
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.example.awol.R
+import com.example.awol.login_signup.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotYourPasswordActivity : AppCompatActivity() {
@@ -23,7 +26,9 @@ class ForgotYourPasswordActivity : AppCompatActivity() {
             auth.sendPasswordResetEmail(etEmailForgotPassword.text.toString()).addOnCompleteListener {
                 if (it.isSuccessful) {
                     Log.d("FORGOT PASS", "Email sent.")
-
+                    Toast.makeText(this, "Email Sent", Toast.LENGTH_SHORT).show()
+                    intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }
