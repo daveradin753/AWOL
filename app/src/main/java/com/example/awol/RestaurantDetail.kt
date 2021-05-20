@@ -32,7 +32,6 @@ class RestaurantDetail : AppCompatActivity() {
         val tvRestaurantDetailAddress = findViewById<TextView>(R.id.tvRestaurantDetailAddress)
         val tvRestaurantDetailWorkingHour = findViewById<TextView>(R.id.tvRestaurantDetailWorkingHour)
         val ivRestaurantDetail = findViewById<ImageView>(R.id.ivRestaurantDetail)
-        val ivRestaurantDetailBack = findViewById<ImageView>(R.id.ivRestaurantDetailBack)
 
         val name = intent.getStringExtra("restoName").toString()
         val address = intent.getStringExtra("restoAddress").toString()

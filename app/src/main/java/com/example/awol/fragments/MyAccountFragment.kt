@@ -3,6 +3,7 @@ package com.example.awol.fragments
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -29,7 +30,8 @@ class MyAccountFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var gsRefrence : StorageReference
+    private lateinit var storage: FirebaseStorage
+    private lateinit var gsReference : StorageReference
     private lateinit var ivProfilePicture : ImageView
     private lateinit var tvProfileName : TextView
     private lateinit var tvProfileEmail : TextView
@@ -58,8 +60,10 @@ class MyAccountFragment : Fragment() {
         val currentUID = auth.uid.toString()
 
         ivProfilePicture.setOnClickListener {
-            val gallery = Intent (Intent.ACTION_GET_CONTENT, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            startActivityForResult(gallery, 1)
+            val gallery = Intent()
+            gallery.type = "image/*"
+            gallery.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(gallery, 100)
         }
 
         database = FirebaseDatabase.getInstance()
@@ -81,18 +85,11 @@ class MyAccountFragment : Fragment() {
             }
 
         })
-
-        val btnLogout = view.findViewById<Button>(R.id.btnLogout)
-        btnLogout.setOnClickListener {
-            val intent = Intent(activity, LoginActivity::class.java)
-            auth.signOut()
-            startActivity(intent)
-        }
-        databaseReference = database.getReference("users").child(currentUID).child("image")
-        databaseReference.addValueEventListener(object: ValueEventListener{
+        databaseReference.child("image").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    ivProfilePicture.setImageURI(Uri.parse(snapshot.value.toString()))
+                    val uri : Uri = Uri.parse(snapshot.value.toString())
+                    ivProfilePicture.setImageURI(uri)
                 }
             }
 
@@ -101,22 +98,31 @@ class MyAccountFragment : Fragment() {
             }
 
         })
+
+        val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+        btnLogout.setOnClickListener {
+            val intent = Intent(activity, LoginActivity::class.java)
+            auth.signOut()
+            startActivity(intent)
+        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == 1) {
+        if (requestCode == 100) {
             profilePicture = data?.data
-            auth = FirebaseAuth.getInstance()
-            var currentUID = auth.uid.toString()
-            var file = Uri.fromFile(File(profilePicture.toString()))
-            var gsReference = FirebaseStorage.getInstance().getReference("users/$currentUID")
+            val currentUID = auth.uid.toString()
+            storage = FirebaseStorage.getInstance()
+            val file = Uri.fromFile(File(profilePicture.toString()))
+            gsReference = storage.getReference("users/$currentUID")
             var uploadTask = gsReference.putFile(file)
             uploadTask.addOnSuccessListener {
-                var profileStorageURL = it.storage.downloadUrl.toString()
-                database = FirebaseDatabase.getInstance()
-                databaseReference = database.getReference("users").child(currentUID)
-                databaseReference.child("image").setValue(profileStorageURL)
+                var profileStorageURL : Uri = it.storage.downloadUrl.result
+                var databasetemp = FirebaseDatabase.getInstance()
+                var databaseReferencetemp = databasetemp.getReference("users").child(currentUID)
+                databaseReferencetemp.child("image").setValue(profileStorageURL.toString())
+                Log.d("PROFILE", "Upload success.")
             }
         }
     }
