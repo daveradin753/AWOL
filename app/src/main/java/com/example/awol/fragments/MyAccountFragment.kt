@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.example.awol.DataObjectRestaurant
 import com.example.awol.MainActivity
 import com.example.awol.R
@@ -88,8 +89,8 @@ class MyAccountFragment : Fragment() {
         databaseReference.child("image").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val uri : Uri = Uri.parse(snapshot.value.toString())
-                    ivProfilePicture.setImageURI(uri)
+
+//                    ivProfilePicture.load(snapshot.value.toString())
                 }
             }
 
@@ -98,6 +99,7 @@ class MyAccountFragment : Fragment() {
             }
 
         })
+        ivProfilePicture.load("gs://awol-223ad.appspot.com/users/MvBc88yQacX3GVpdjvfXT0mOaqq2")
 
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         btnLogout.setOnClickListener {
@@ -114,18 +116,23 @@ class MyAccountFragment : Fragment() {
             profilePicture = data?.data
             val currentUID = auth.uid.toString()
             storage = FirebaseStorage.getInstance()
-            val file = Uri.fromFile(File(profilePicture.toString()))
+//            val file = Uri.fromFile(File(profilePicture.toString()))
             gsReference = storage.getReference("users/$currentUID")
-            var uploadTask = gsReference.putFile(file)
+            var uploadTask = gsReference.putFile(profilePicture!!)
             uploadTask.addOnSuccessListener {
-                var profileStorageURL : Uri = it.storage.downloadUrl.result
-                var databasetemp = FirebaseDatabase.getInstance()
-                var databaseReferencetemp = databasetemp.getReference("users").child(currentUID)
-                databaseReferencetemp.child("image").setValue(profileStorageURL.toString())
-                Log.d("PROFILE", "Upload success.")
+                gsReference.downloadUrl.addOnCompleteListener {
+                    var profileStorageURL = it.result.toString()
+                    var databasetemp = FirebaseDatabase.getInstance()
+                    var databaseReferencetemp = databasetemp.getReference("users").child(currentUID)
+                    databaseReferencetemp.child("image").setValue(profileStorageURL.toString())
+                    Log.d("PROFILE", "Upload success.")
+                }
+
             }
         }
     }
+
+
 
     companion object {
 

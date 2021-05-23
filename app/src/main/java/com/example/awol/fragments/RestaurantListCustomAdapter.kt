@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.awol.DataObjectRestaurant
 import com.example.awol.R
 import com.example.awol.RestaurantDetail
@@ -42,8 +43,11 @@ class RestaurantListCustomAdapter(
         gsReference = FirebaseStorage.getInstance().getReferenceFromUrl(data[position].images.toString())
         gsReference.getFile(localFile).addOnSuccessListener {
             val bitmap: Bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-            holder.ivRestaurantImage.setImageBitmap(bitmap)
+            holder.ivRestaurantImage.load(bitmap){
+                placeholder(R.drawable.ic_launcher_background)
+            }
         }
+
         holder.tvRestaurantName.text = data[position].name
         holder.tvRestaurantAddress.text = data[position].alamat
         itemClass.add(holder.restaurantCard)
