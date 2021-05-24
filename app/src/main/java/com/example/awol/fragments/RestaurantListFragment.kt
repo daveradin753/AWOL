@@ -35,17 +35,10 @@ class RestaurantListFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         getDataRestaurant()
 
-        val layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
-        val adapter = RestaurantListCustomAdapter(dataObjectRestaurant)
-        val rvRestaurantList = view.findViewById<RecyclerView>(R.id.rvRestaurantList)
-
-        rvRestaurantList.layoutManager = layoutManager
-        rvRestaurantList.setHasFixedSize(true)
-        rvRestaurantList.adapter = adapter
-
     }
 
     private fun getDataRestaurant() {
+
         database = FirebaseDatabase.getInstance()
         databaseReference = database.getReference("restaurants")
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -58,6 +51,14 @@ class RestaurantListFragment : Fragment() {
                         val workingHour = data.child("working hour").value.toString()
                         val images = data.child("image").child("restaurant image").value.toString()
                         dataObjectRestaurant.add(DataObjectRestaurant(name, alamat, workingHour, images))
+
+                        val layoutManager = LinearLayoutManager(view?.context, LinearLayoutManager.VERTICAL, false)
+                        val adapter = RestaurantListCustomAdapter(dataObjectRestaurant)
+                        val rvRestaurantList = view?.findViewById<RecyclerView>(R.id.rvRestaurantList)
+
+                        rvRestaurantList?.layoutManager = layoutManager
+                        rvRestaurantList?.setHasFixedSize(true)
+                        rvRestaurantList?.adapter = adapter
 //                        Log.e("Database", "Read Success $name")
 
                     }
