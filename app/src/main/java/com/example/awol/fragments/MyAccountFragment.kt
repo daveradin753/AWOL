@@ -90,7 +90,7 @@ class MyAccountFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
 
-//                    ivProfilePicture.load(snapshot.value.toString())
+                    ivProfilePicture.load(snapshot.value.toString())
                 }
             }
 
@@ -99,7 +99,7 @@ class MyAccountFragment : Fragment() {
             }
 
         })
-        ivProfilePicture.load("gs://awol-223ad.appspot.com/users/MvBc88yQacX3GVpdjvfXT0mOaqq2")
+//        ivProfilePicture.load(profilePicture)
 
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         btnLogout.setOnClickListener {
